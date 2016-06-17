@@ -15,12 +15,18 @@ var csvObject = [[
   "Mês de Emissão",
   "Dia de Emissão",
   "CNH do Motorista",
+
+  "Razão Social do Emitente",
   "Bairro de Origem",
   "Município de Origem",
+
+  "Razão Social do Destinatário",
   "Bairro de Destino",
   "Município de Destino",
+
   "Carreta",
-  "Peso"
+  "Peso",
+  "Valor Total da NFe"
 ]];
 
 
@@ -37,12 +43,15 @@ if (dir) {
               moment(result.nfeProc.NFe[0].infNFe[0].ide[0].dhEmi[0]).format('MM'),
               moment(result.nfeProc.NFe[0].infNFe[0].ide[0].dhEmi[0]).format('DD'),
               result.nfeProc.NFe[0].infNFe[0].infAdic[0].infCpl[0].match(/CNH:[0-9]+/g)[0].substr(4),
+              result.nfeProc.NFe[0].infNFe[0].emit[0].xNome[0],
               result.nfeProc.NFe[0].infNFe[0].emit[0].enderEmit[0].xBairro[0],
               result.nfeProc.NFe[0].infNFe[0].emit[0].enderEmit[0].xMun[0],
+              result.nfeProc.NFe[0].infNFe[0].dest[0].xNome[0],
               result.nfeProc.NFe[0].infNFe[0].dest[0].enderDest[0].xBairro[0],
               result.nfeProc.NFe[0].infNFe[0].dest[0].enderDest[0].xMun[0],
               result.nfeProc.NFe[0].infNFe[0].transp[0].veicTransp[0].placa[0].replace("-", ""),
-              result.nfeProc.NFe[0].infNFe[0].transp[0].vol[0].pesoB[0]
+              result.nfeProc.NFe[0].infNFe[0].transp[0].vol[0].pesoB[0],
+              result.nfeProc.NFe[0].infNFe[0].total[0].ICMSTot[0].vNF[0]
             ])
 
             csvStringify(csvObject, function(err, output){
