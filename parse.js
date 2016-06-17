@@ -6,7 +6,7 @@ var fs = require('fs');
 var path = require('path');
 var moment = require('moment');
 var parseString = new xml2js.Parser().parseString;
-var dir = path.join(process.cwd(), process.argv[2]);
+var dir = path.join(process.argv[2]);
 
 var csvObject = [[
   "Nota Fiscal",
